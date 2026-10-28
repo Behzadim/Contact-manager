@@ -1,4 +1,4 @@
-import Contact from "./Contatc";
+import Contact from "./Contact";
 import { CURRENTLINE, ORANGE, PINK } from "../../helpers/Colors";
 import Spinner from "../Spinner";
 
