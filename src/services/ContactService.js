@@ -19,6 +19,11 @@ export const getAllGroups = () => {
   return axios.get(url);
 };
 
+export const getContact = (contactId, contact) => {
+  const url = `${SERVER_URL}/contacts/${contactId}`;
+  return axios.get(url, contact);
+};
+
 export const getGroup = (groupsId) => {
   const url = `${SERVER_URL}/groups/${groupsId}`;
   return axios.get(url);
