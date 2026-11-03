@@ -1,6 +1,10 @@
 import { PURPLE } from "../../helpers/Colors"
+import { useContext } from "react"
+import { ContactContext } from "../../context/contactContext"
 
 const SearchContact = () => {
+    const { contactQuery, contactSearch } = useContext(ContactContext)
+
     return (
         <div className="input-group mx-2 w-75" dir="ltr">
             <span
@@ -11,6 +15,8 @@ const SearchContact = () => {
                 <i className="fa fa-search" />
             </span>
             <input
+                value={contactQuery.text}
+                onChange={contactSearch}
                 className="form-control"
                 type="text"
                 dir="rtl"

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { ContactContext } from "../../context/contactContext";
 import { Spinner } from "../";
 import { COMMENT, GREEN, PURPLE } from "../../helpers/Colors";
 
-const AddContact = ({ loading, setContactInfo, contact, groups, createContactForm }) => {
+const AddContact = () => {
+    const { loading, onContactChange, contact, groups, createContact } = useContext(ContactContext)
     return (
         <>
             {loading ? (
@@ -37,13 +39,13 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                             <hr style={{ backgroundColor: GREEN }} />
                             <div className="row mt-5">
                                 <div className="col-md-4">
-                                    <form onSubmit={createContactForm} >
+                                    <form onSubmit={createContact} >
                                         <div className="mb-2">
                                             <input
                                                 name="fullname"
                                                 type="text"
                                                 value={contact.fullname}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                                 placeholder="نام و نام خانوادگی"
                                                 required={true}
@@ -54,7 +56,7 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                                                 name="photo"
                                                 type="text"
                                                 value={contact.photo}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="آدرس تصویر"
@@ -65,7 +67,7 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                                                 name="mobile"
                                                 type="number"
                                                 value={contact.mobile}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="شماره موبایل"
@@ -76,7 +78,7 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                                                 type="email"
                                                 name="email"
                                                 value={contact.email}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="آدرس ایمیل"
@@ -87,7 +89,7 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                                                 type="text"
                                                 name="job"
                                                 value={contact.job}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                                 required={true}
                                                 placeholder="شغل"
@@ -98,7 +100,7 @@ const AddContact = ({ loading, setContactInfo, contact, groups, createContactFor
                                                 name="group"
                                                 required={true}
                                                 value={contact.group}
-                                                onChange={setContactInfo}
+                                                onChange={onContactChange}
                                                 className="form-control"
                                             >
                                                 <option value="">انتخاب گروه</option>
